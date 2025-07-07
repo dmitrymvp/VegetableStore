@@ -3,7 +3,7 @@ import logo from '../../assets/logo.svg';
 import cart from '../../assets/icons/cart.png';
 import cartContent from '../../assets/cart_content.png';
 
-const Header = ({ visibleCart, openCart }) => {
+const Header = ({ openCart }) => {
   return (
     <Flex
       justify="space-between"
@@ -43,7 +43,7 @@ const Header = ({ visibleCart, openCart }) => {
           </Button>
         </Popover.Target>
         <Popover.Dropdown>
-          <Image src={cartContent} fit="containt" />
+          <Image src={cartContent} />
         </Popover.Dropdown>
       </Popover>
     </Flex>

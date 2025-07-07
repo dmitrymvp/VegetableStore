@@ -6,11 +6,13 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import Catalog from './components/Catalog/Catalog';
 import Header from './components/Header/Header';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
+export const QuantityContext = createContext('without provider');
 
 export default function App() {
   const [data, setData] = useState([]);
   const [visibleCart, setVisibleCart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   const fetchData = async () => {
     try {
@@ -31,12 +33,21 @@ export default function App() {
     setVisibleCart((prev) => !prev);
   };
 
+  const increment = () => {
+    setQuantity((prev) => prev + 1);
+  };
+  const decriment = () => {
+    setQuantity((prev) => prev - 1);
+  };
+
   return (
     <MantineProvider>
       {
         <>
-          <Header visibleCart={visibleCart} openCart={openCart} />
-          <Catalog data={data} />
+          <Header openCart={openCart} />
+          <QuantityContext.Provider value={{ quantity, increment, decriment }}>
+            <Catalog data={data} />
+          </QuantityContext.Provider>
         </>
       }
     </MantineProvider>
