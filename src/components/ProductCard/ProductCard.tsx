@@ -2,9 +2,7 @@ import { Card, Image, Group, Text } from '@mantine/core';
 import ProductButton from './ProductButton';
 import ProductQuantity from './ProductQuantity';
 
-function ProductCard({ product }) {
-  const { image, name, price } = product;
-
+function ProductCard({ name, image, price }) {
   return (
     <Card h={414} w={302} padding="md" radius="md">
       <Image src={image} height={276} alt="Norway" />

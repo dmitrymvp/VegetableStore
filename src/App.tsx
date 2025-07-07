@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 export default function App() {
   const [data, setData] = useState([]);
+  const [visibleCart, setVisibleCart] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -26,11 +27,15 @@ export default function App() {
     fetchData();
   }, []);
 
+  const openCart = () => {
+    setVisibleCart((prev) => !prev);
+  };
+
   return (
     <MantineProvider>
       {
         <>
-          <Header />
+          <Header visibleCart={visibleCart} openCart={openCart} />
           <Catalog data={data} />
         </>
       }

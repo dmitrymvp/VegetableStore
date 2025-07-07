@@ -17,7 +17,14 @@ const Catalog = ({ data }) => {
         wrap="wrap"
       >
         {data.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          return (
+            <ProductCard
+              key={product.id}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+            />
+          );
         })}
       </Flex>
     </Container>
