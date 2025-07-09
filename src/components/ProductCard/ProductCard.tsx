@@ -2,7 +2,7 @@ import { Card, Image, Group, Text } from '@mantine/core';
 import ProductButton from './ProductButton';
 import ProductQuantity from './ProductQuantity';
 
-function ProductCard({ name, image, price, id, addCart}) {
+function ProductCard({ name, image, price, id, addCart }) {
   return (
     <Card h={414} w={302} padding="md" radius="md">
       <Image src={image} height={276} alt="Norway" />
@@ -16,14 +16,14 @@ function ProductCard({ name, image, price, id, addCart}) {
             {name.split(' - ')[1]}
           </Text>
         </Group>
-        <ProductQuantity id={id}/>
+        <ProductQuantity id={id} />
       </Group>
 
       <Group justify="space-between">
         <Text fw={700} fz="xl" mt="xs">
           {`$${price}`}
         </Text>
-        <ProductButton addCart={addCart}/>
+        <ProductButton addCart={addCart} />
       </Group>
     </Card>
   );

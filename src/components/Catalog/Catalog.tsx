@@ -24,7 +24,7 @@ const Catalog = ({ data, addCart }) => {
               name={product.name}
               image={product.image}
               price={product.price}
-              addCart={addCart}
+              addCart={() => addCart(product.id)}
             />
           );
         })}

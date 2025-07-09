@@ -1,9 +1,8 @@
 import { Button, Flex, Image, Popover, Text } from '@mantine/core';
 import logo from '../../assets/logo.svg';
-import cartImage from '../../assets/icons/cart.png';
-import cartContent from '../../assets/cart_content.png';
+import Cart from './Cart';
 
-const Header = ({cart}) => {
+const Header = () => {
   return (
     <Flex
       justify="space-between"
@@ -21,30 +20,7 @@ const Header = ({cart}) => {
     >
       <Image src={logo} w={209} fit="contain" />
 
-      <Popover position="bottom" withArrow shadow="md">
-        <Popover.Target>
-          <Button
-            w={144}
-            color="#54b46a"
-            c="white"
-            rightSection={
-              <img
-                src={cartImage}
-                alt="cart"
-                color="green"
-                style={{ width: 16, height: 16 }}
-              />
-            }
-            leftSection={<span />}
-            fz="md"
-          >
-            Cart
-          </Button>
-        </Popover.Target>
-        <Popover.Dropdown>
-          <Image src={cart.image} />
-        </Popover.Dropdown>
-      </Popover>
+      <Cart />
     </Flex>
   );
 };

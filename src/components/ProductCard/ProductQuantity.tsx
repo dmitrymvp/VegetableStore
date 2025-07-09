@@ -3,12 +3,12 @@ import minus from '../../assets/icons/Rectangle 70.svg';
 // import plus from '../../assets/icons/Union.svg';
 import plus from '../../assets/icons/Union.png';
 import { useContext } from 'react';
-import { QuantityContext } from '../../App';
+import { AppContext } from '../../App';
 
-const ProductQuantity = ({id}) => {
-  const context = useContext(QuantityContext);
+const ProductQuantity = ({ id }) => {
+  const context = useContext(AppContext);
 
-  const { quantity, increment, decriment } = context;
+  const { quantity, increment, decrement } = context;
 
   return (
     <Group justify="flex-end" gap="xs">
@@ -18,12 +18,12 @@ const ProductQuantity = ({id}) => {
         radius="md"
         color="#dee2e6"
         p={8}
-        onClick={() => decriment(id)}
+        onClick={() => decrement(id)}
       >
         <Image src={minus} w={12} />
       </Badge>
       <Text size="sm" fw={500} fz={16}>
-        {quantity[id]}
+        {quantity[id] ?? 1}
       </Text>
       <Badge
         h={30}
