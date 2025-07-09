@@ -5,7 +5,7 @@ import plus from '../../assets/icons/Union.png';
 import { useContext } from 'react';
 import { QuantityContext } from '../../App';
 
-const ProductQuantity = () => {
+const ProductQuantity = ({id}) => {
   const context = useContext(QuantityContext);
 
   const { quantity, increment, decriment } = context;
@@ -18,12 +18,12 @@ const ProductQuantity = () => {
         radius="md"
         color="#dee2e6"
         p={8}
-        onClick={decriment}
+        onClick={() => decriment(id)}
       >
         <Image src={minus} w={12} />
       </Badge>
       <Text size="sm" fw={500} fz={16}>
-        {quantity}
+        {quantity[id]}
       </Text>
       <Badge
         h={30}
@@ -31,7 +31,7 @@ const ProductQuantity = () => {
         radius="md"
         color="#dee2e6"
         p={8}
-        onClick={increment}
+        onClick={() => increment(id)}
       >
         <Image src={plus} w={12} />
       </Badge>

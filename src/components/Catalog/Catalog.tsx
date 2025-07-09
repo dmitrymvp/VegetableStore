@@ -1,7 +1,7 @@
 import { Container, Flex, Title } from '@mantine/core';
 import ProductCard from '../ProductCard/ProductCard';
 
-const Catalog = ({ data }) => {
+const Catalog = ({ data, addCart }) => {
   return (
     <Container size={1280} mt={59} pt={60} pl={0} pr={0}>
       <Title order={1} fz={32} mb={49} ta="start">
@@ -20,9 +20,11 @@ const Catalog = ({ data }) => {
           return (
             <ProductCard
               key={product.id}
+              id={product.id}
               name={product.name}
               image={product.image}
               price={product.price}
+              addCart={addCart}
             />
           );
         })}

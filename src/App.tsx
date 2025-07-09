@@ -11,8 +11,8 @@ export const QuantityContext = createContext('without provider');
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [visibleCart, setVisibleCart] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState({});
+  const [cart, setCart] = useState([])
 
   const fetchData = async () => {
     try {
@@ -25,28 +25,31 @@ export default function App() {
     }
   };
 
+  const addCart = (id)=> {
+const product = data.find(item=>item.id === id)
+setCart([...cart, product])
+console.log(cart)
+  }
+
   useEffect(() => {
     fetchData();
+    
   }, []);
 
-  const openCart = () => {
-    setVisibleCart((prev) => !prev);
+  const increment = (id) => {
+    setQuantity((prev) => ({...prev, [id]: (prev[id] || 1) + 1 }));
   };
-
-  const increment = () => {
-    setQuantity((prev) => prev + 1);
-  };
-  const decriment = () => {
-    setQuantity((prev) => prev - 1);
+  const decriment = (id) => {
+    setQuantity((prev) => ({...prev, [id]: (prev[id] || 1) - 1}));
   };
 
   return (
     <MantineProvider>
       {
         <>
-          <Header openCart={openCart} />
+          <Header cart={cart}/>
           <QuantityContext.Provider value={{ quantity, increment, decriment }}>
-            <Catalog data={data} />
+            <Catalog data={data} addCart={addCart}/>
           </QuantityContext.Provider>
         </>
       }

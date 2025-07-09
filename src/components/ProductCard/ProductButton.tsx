@@ -1,9 +1,10 @@
 import { Button } from '@mantine/core';
 import cart from '../../assets/icons/cart.png';
 
-const ProductButton = () => {
+const ProductButton = ({addCart}) => {
   return (
     <Button
+    onClick={addCart}
       w={200}
       h={44}
       color=" #e7faeb"
