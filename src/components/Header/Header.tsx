@@ -3,6 +3,8 @@ import logo from '../../assets/logo.svg';
 import Cart from './Cart';
 
 const Header = () => {
+  console.log('header render')
+
   return (
     <Flex
       justify="space-between"

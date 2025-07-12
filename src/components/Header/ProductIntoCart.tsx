@@ -1,12 +1,10 @@
 import { Card, Image, Group, Text, Flex } from '@mantine/core';
 import ProductQuantity from '../ProductCard/ProductQuantity';
-import { AppContext } from '../../App';
-import { useContext } from 'react';
 
 function ProductIntoCard({ name, image, price, id }) {
-  const context = useContext(AppContext);
+  console.log('productntocart render')
 
-  const { quantity, increment, decrement } = context;
+
   return (
     <Card w={395} h={80} p={0}>
       <Flex mt={15} wrap="nowrap">

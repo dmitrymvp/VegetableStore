@@ -2,6 +2,8 @@ import { Button } from '@mantine/core';
 import cart from '../../assets/icons/cart.png';
 
 const ProductButton = ({ addCart }) => {
+  console.log('product button render')
+
   return (
     <Button
       onClick={addCart}

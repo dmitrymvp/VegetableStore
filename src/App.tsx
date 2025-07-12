@@ -7,11 +7,21 @@ import { MantineProvider } from '@mantine/core';
 import Catalog from './components/Catalog/Catalog';
 import Header from './components/Header/Header';
 import { useEffect, useState, createContext } from 'react';
+
 export const AppContext = createContext('without provider');
+export const QuantityContext = createContext('without provider')
+
+type Product = {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};
+
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [quantity, setQuantity] = useState({});
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -29,30 +39,28 @@ export default function App() {
     fetchData();
   }, []);
 
-  const addCart = (id: number) => {
+  const addCart = (id: number, quantity: number) => {
     const product = data.find((item) => item.id === id);
 
     setCart((prev) => {
       const isProductInCard = prev.some((item) => item.id === id);
+
       if (isProductInCard) return prev;
-      return [...cart, product];
+
+      return [...prev, {...product, quantity}];
     });
   };
 
-  const increment = (id: number) => {
-    setQuantity((prev) => ({ ...prev, [id]: (prev[id] || 1) + 1 }));
-  };
-  const decrement = (id: number) => {
-    setQuantity((prev) => ({ ...prev, [id]: (prev[id] || 0) - 1 }));
-  };
+
 
   return (
     <MantineProvider>
       {
         <>
           <AppContext.Provider
-            value={{ data, quantity, cart, increment, decrement, addCart }}
+            value={{ data, cart,  addCart }}
           >
+
             <Header />
             <Catalog data={data} addCart={addCart} />
           </AppContext.Provider>

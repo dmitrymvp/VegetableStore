@@ -6,9 +6,11 @@ import { useContext } from 'react';
 import { AppContext } from '../../App';
 
 const Cart = () => {
+  console.log('catalog render')
+  
   const context = useContext(AppContext);
   const { cart } = context;
-
+  console.log(cart)
   return (
     <Popover position="bottom" withArrow shadow="md">
       <Popover.Target>
