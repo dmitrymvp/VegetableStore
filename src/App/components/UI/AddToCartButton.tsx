@@ -1,15 +1,16 @@
 import { Button } from '@mantine/core';
-import cart from '../../assets/icons/cart.png';
+import cart from '../../../assets/icons/cart.png';
 
-const ProductButton = ({ addCart }) => {
-  console.log('product button render')
+type AddToCartButtonProps = {
+  addCart: () => void;
+};
 
+const AddToCartButton = ({ addCart }: AddToCartButtonProps) => {
   return (
     <Button
-      onClick={addCart}
       w={200}
       h={44}
-      color=" #e7faeb"
+      color="#E7FAEB"
       c="#3b944e"
       rightSection={
         <img
@@ -23,10 +24,11 @@ const ProductButton = ({ addCart }) => {
       mt="md"
       fz="md"
       lts={0.5}
+      onClick={addCart}
     >
       Add to cart
     </Button>
   );
 };
 
-export default ProductButton;
+export default AddToCartButton;

@@ -1,10 +1,8 @@
-import { Button, Flex, Image, Popover, Text } from '@mantine/core';
-import logo from '../../assets/logo.svg';
-import Cart from './Cart';
+import { Flex, Image } from '@mantine/core';
+import logo from '../../../assets/logo.svg';
+import Cart from '../Cart/Cart';
 
 const Header = () => {
-  console.log('header render')
-
   return (
     <Flex
       justify="space-between"
