@@ -10,9 +10,6 @@ import Header from './components/Header/Header';
 import Catalog from './components/Catalog/Catalog';
 import { CartProvider } from './context/CartContext';
 
-// export const AppContext = createContext('without provider');
-// export const QuantityContext = createContext('without provider');
-
 export type Product = {
   id: number;
   name: string;
@@ -22,6 +19,7 @@ export type Product = {
 
 export default function App() {
   const [data, setData] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +30,8 @@ export default function App() {
         setData(response.data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -44,7 +44,7 @@ export default function App() {
         <CartProvider data={data}>
           <QuantityProvider>
             <Header />
-            <Catalog data={data} />
+            <Catalog data={data} isLoading={isLoading} />
           </QuantityProvider>
         </CartProvider>
       }

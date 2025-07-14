@@ -18,15 +18,19 @@ import { QuantityContext } from '../../context/QauntityContext';
 
 const Cart = () => {
   const cartContext = useContext(CartContext);
+
   if (!cartContext) {
     throw new Error('without provider');
   }
+
   const { cart } = cartContext;
 
   const quantityContext = useContext(QuantityContext);
+
   if (!quantityContext) {
     throw new Error('without provider');
   }
+
   const { quantity } = quantityContext;
 
   const cartList = cart.map((item, index) => {
@@ -46,6 +50,7 @@ const Cart = () => {
       </div>
     );
   });
+
   const getTotal = () => {
     return cart.reduce((acc, item) => {
       const count = quantity[item.id] ?? 1;

@@ -1,5 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
-import { CartContext } from './CartContext';
+import { createContext, useState, type ReactNode } from 'react';
 
 type QauntityContextType = {
   quantity: Record<number, number>;
@@ -14,12 +13,6 @@ type QuantityProviderProps = {
 export const QuantityContext = createContext<QauntityContextType | null>(null);
 
 export const QuantityProvider = ({ children }: QuantityProviderProps) => {
-  const cartContext = useContext(CartContext);
-  if (!cartContext) {
-    throw new Error('without provider');
-  }
-  const { removeFromCart } = cartContext;
-
   const [quantity, setQuantity] = useState<Record<number, number>>({});
 
   const increment = (id: number) => {
@@ -32,9 +25,7 @@ export const QuantityProvider = ({ children }: QuantityProviderProps) => {
   const decrement = (id: number) => {
     setQuantity((prev) => {
       const newQuantity = Math.max((prev[id] || 1) - 1, 0);
-      if (newQuantity === 0) {
-        removeFromCart(id);
-      }
+
       return {
         ...prev,
         [id]: newQuantity,

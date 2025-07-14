@@ -1,11 +1,12 @@
 import { Card, Image, Group, Text } from '@mantine/core';
 import AddToCartButton from '../UI/AddToCartButton';
 import Quantity from '../UI/Quantity';
+
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import type { Product } from '../../App';
 
-function ProductCard({ name, image, price, id }: Product) {
+const CatalogItem = ({ name, image, price, id }: Product) => {
   const context = useContext(CartContext);
 
   if (!context) {
@@ -38,5 +39,5 @@ function ProductCard({ name, image, price, id }: Product) {
       </Group>
     </Card>
   );
-}
-export default ProductCard;
+};
+export default CatalogItem;

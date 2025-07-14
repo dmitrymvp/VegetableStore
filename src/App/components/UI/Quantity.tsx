@@ -4,19 +4,28 @@ import plus from '../../../assets/icons/Union.png';
 
 import { useContext } from 'react';
 import { QuantityContext } from '../../context/QauntityContext';
+import { CartContext } from '../../context/CartContext';
 
 type QuantityProps = {
   id: number;
 };
 
 const Quantity = ({ id }: QuantityProps) => {
-  const context = useContext(QuantityContext);
+  const cartContent = useContext(CartContext);
 
-  if (!context) {
+  if (!cartContent) {
     throw new Error('without provider');
   }
 
-  const { quantity, increment, decrement } = context;
+  const { removeFromCart } = cartContent;
+
+  const quantityContext = useContext(QuantityContext);
+
+  if (!quantityContext) {
+    throw new Error('without provider');
+  }
+
+  const { quantity, increment, decrement } = quantityContext;
 
   return (
     <Group justify="flex-end" gap="xs">
@@ -26,7 +35,9 @@ const Quantity = ({ id }: QuantityProps) => {
         radius="md"
         color="#dee2e6"
         p={8}
-        onClick={() => decrement(id)}
+        onClick={
+          quantity[id] > 1 ? () => decrement(id) : () => removeFromCart(id)
+        }
       >
         <Image src={minus} w={12} />
       </Button>
