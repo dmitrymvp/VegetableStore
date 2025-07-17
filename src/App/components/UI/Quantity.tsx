@@ -39,7 +39,7 @@ const Quantity = ({ id }: QuantityProps) => {
           quantity[id] > 1 ? () => decrement(id) : () => removeFromCart(id)
         }
       >
-        <Image src={minus} w={12} />
+        <Image src={minus} alt={minus} w={12} />
       </Button>
       <Text size="sm" fw={500} fz={16}>
         {quantity[id] || 1}
@@ -52,7 +52,7 @@ const Quantity = ({ id }: QuantityProps) => {
         p={8}
         onClick={() => increment(id)}
       >
-        <Image src={plus} w={12} />
+        <Image src={plus} alt={plus} w={12} />
       </Button>
     </Group>
   );
