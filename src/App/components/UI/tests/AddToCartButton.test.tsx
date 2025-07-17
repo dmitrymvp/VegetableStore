@@ -1,37 +1,36 @@
-import { describe, it, expect, vi } from "vitest";
-import { screen } from "@testing-library/react";
-import AddToCartButton from "../AddToCartButton";
-import { renderWithMantine } from "../../../../test/utils";
-import userEvent from '@testing-library/user-event'
+import { describe, it, expect, vi } from 'vitest';
+import { screen } from '@testing-library/react';
+import AddToCartButton from '../AddToCartButton';
+import { renderWithMantine } from '../../../../test/utils';
+import userEvent from '@testing-library/user-event';
 
 describe('AddToCartButton', () => {
-    it('Должен отображаться текст кнопки', () => {
-        renderWithMantine(<AddToCartButton/>)
-        screen.debug()
+  it('Должен отображаться текст кнопки', () => {
+    renderWithMantine(<AddToCartButton />);
+    screen.debug();
 
-        const textButton = screen.getByText(/Add to cart/i)
-        expect(textButton).toBeInTheDocument()
-    })
+    const textButton = screen.getByText(/Add to cart/i);
+    expect(textButton).toBeInTheDocument();
+  });
 
-    it('Должна отображаться иконка корзины', ()=> {
-        renderWithMantine(<AddToCartButton/>)
+  it('Должна отображаться иконка корзины', () => {
+    renderWithMantine(<AddToCartButton />);
 
-        const altImage = screen.getByAltText(/cart/i)
-        expect(altImage).toBeInTheDocument()
-    })
+    const altImage = screen.getByAltText(/cart/i);
+    expect(altImage).toBeInTheDocument();
+  });
 
-    it('Должна вызывать функцию addCart при клике', async () => {
-        const addCart = vi.fn()
-        renderWithMantine(<AddToCartButton addCart={addCart}/>)
+  it('Должна вызывать функцию addCart при клике', async () => {
+    const addCart = vi.fn();
+    renderWithMantine(<AddToCartButton addCart={addCart} />);
 
-        const button = screen.getByRole('button')
+    const button = screen.getByRole('button');
 
-        
-        expect(button).toBeInTheDocument()
+    expect(button).toBeInTheDocument();
 
-       await userEvent.click(button)
-       await userEvent.click(button)
+    await userEvent.click(button);
+    await userEvent.click(button);
 
-        expect(addCart).toHaveBeenCalledTimes(2)
-    })
-})
+    expect(addCart).toHaveBeenCalledTimes(2);
+  });
+});
