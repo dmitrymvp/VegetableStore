@@ -16,7 +16,7 @@ const CatalogItem = ({ name, image, price, id }: Product) => {
   const { addCart } = context;
 
   return (
-    <Card h={414} w={302} padding="md" radius="md">
+    <Card h={414} w={302} padding="md" radius="md" data-testid="card">
       <Image src={image} height={276} alt="Norway" />
 
       <Group justify="space-between" mt={15}>

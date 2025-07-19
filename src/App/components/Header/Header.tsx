@@ -18,7 +18,7 @@ const Header = () => {
       pt={7}
       pb={7}
     >
-      <Image src={logo} w={209} fit="contain" />
+      <Image src={logo} alt="logo" w={209} fit="contain" />
 
       <Cart />
     </Flex>

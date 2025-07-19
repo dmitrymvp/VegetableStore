@@ -2,7 +2,7 @@ import { Container, Flex, Title } from '@mantine/core';
 
 import CatalogItem from './CatalogItem';
 import { type Product } from '../../App';
-import SkeletonCard from '../UI/skeletonCard';
+import SkeletonCard from '../UI/SkeletonCard';
 
 type CatalogProps = {
   data: Product[];

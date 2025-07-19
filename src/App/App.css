@@ -4,7 +4,3 @@
   text-align: center;
   background-color: #f3f5fa;
 }
-
-button::hover {
-  background: #dddddd;
-}
