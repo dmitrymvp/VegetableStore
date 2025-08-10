@@ -1,6 +1,6 @@
 import { Card, Image, Group, Text } from '@mantine/core';
-import AddToCartButton from '../UI/AddToCartButton';
-import Quantity from '../UI/Quantity';
+import AddToCartButton from '../../shared/ui/AddToCartButton';
+import Quantity from '../../shared/ui/Quantity';
 
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';

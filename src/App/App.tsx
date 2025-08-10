@@ -7,15 +7,9 @@ import { MantineProvider } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { QuantityProvider } from './context/QauntityContext';
 import Header from './components/Header/Header';
-import Catalog from './components/Catalog/Catalog';
+import Catalog from '../features/Catalog/Catalog';
 import { CartProvider } from './context/CartContext';
-
-export type Product = {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-};
+import type { Product } from './shared/types/types';
 
 export default function App() {
   const [data, setData] = useState<Product[]>([]);

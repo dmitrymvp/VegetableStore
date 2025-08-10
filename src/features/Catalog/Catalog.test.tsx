@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { screen } from '@testing-library/react';
-import Catalog from '../Catalog';
+import Catalog from '../../../../features/Catalog';
 import { productResponse } from '../../../../mocks/response';
 import { renderWithProviders } from '../../../../test/utils';
 

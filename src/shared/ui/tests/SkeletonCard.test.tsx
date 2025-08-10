@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
-import SkeletonCard from '../SkeletonCard';
-import { renderWithProviders } from '../../../../test/utils';
+import SkeletonCard from '../../components/UI/SkeletonCard';
+import { renderWithProviders } from '../../../test/utils';
 
 describe('SkeletonCard', () => {
   it('Должен отображать скелетон и лоадер', () => {

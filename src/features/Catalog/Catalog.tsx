@@ -1,8 +1,8 @@
 import { Container, Flex, Title } from '@mantine/core';
 
-import CatalogItem from './CatalogItem';
-import { type Product } from '../../App';
-import SkeletonCard from '../UI/SkeletonCard';
+import CatalogItem from '../App/components/Catalog/CatalogItem';
+import { type Product } from '../../App/App';
+import SkeletonCard from '../../App/shared/ui/SkeletonCard';
 
 type CatalogProps = {
   data: Product[];
