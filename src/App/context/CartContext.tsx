@@ -1,5 +1,5 @@
 import { createContext, useState, type ReactNode } from 'react';
-import { type Product } from '../App';
+import { type Product } from '../../shared/types/types';
 
 type CartContextType = {
   cart: Product[];

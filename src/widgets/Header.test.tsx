@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
 import Header from './Header';
-import { renderWithProviders } from '../../../test/utils';
+import { renderWithProviders } from './../test/utils';
 
 describe('Header', () => {
   renderWithProviders(<Header />);

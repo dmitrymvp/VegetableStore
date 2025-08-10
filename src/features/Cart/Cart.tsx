@@ -9,12 +9,12 @@ import {
   Container,
   Badge,
 } from '@mantine/core';
-import cartImage from '../../../assets/icons/cart.svg';
-import cartContent from '../../../assets/cart_content.png';
-import CartItem from './CartItem';
+import cartImage from '../../shared/assets/icons/cart.svg';
+import cartContent from '../../shared/assets/cart_content.png';
+import CartItem from '../../entities/CartItem/CartItem';
 import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
-import { QuantityContext } from '../../context/QauntityContext';
+import { CartContext } from '../../App/context/CartContext';
+import { QuantityContext } from '../../App/context/QauntityContext';
 
 const Cart = () => {
   const cartContext = useContext(CartContext);

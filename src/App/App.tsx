@@ -5,11 +5,8 @@ import '@mantine/core/styles.css';
 
 import { MantineProvider } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { QuantityProvider } from './context/QauntityContext';
-import Header from './components/Header/Header';
-import Catalog from '../features/Catalog/Catalog';
-import { CartProvider } from './context/CartContext';
-import type { Product } from './shared/types/types';
+import type { Product } from '../shared/types/types';
+import MainPage from '../pages/MainPage';
 
 export default function App() {
   const [data, setData] = useState<Product[]>([]);
@@ -34,14 +31,7 @@ export default function App() {
 
   return (
     <MantineProvider>
-      {
-        <CartProvider data={data}>
-          <QuantityProvider>
-            <Header />
-            <Catalog data={data} isLoading={isLoading} />
-          </QuantityProvider>
-        </CartProvider>
-      }
+      <MainPage />
     </MantineProvider>
   );
 }

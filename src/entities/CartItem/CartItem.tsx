@@ -1,6 +1,6 @@
 import { Card, Image, Group, Text, Flex } from '@mantine/core';
 import Quantity from '../../shared/ui/Quantity';
-import { type Product } from '../../App';
+import { type Product } from '../../shared/types/types';
 
 function CartItem({ name, image, price, id }: Product) {
   return (

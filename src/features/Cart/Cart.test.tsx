@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import Cart from '../Cart';
-import { renderWithProviders } from '../../../../test/utils';
+import Cart from './Cart';
+import { renderWithProviders } from '../../test/utils';
 import { screen } from '@testing-library/react';
 
 describe('Cart', () => {

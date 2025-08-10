@@ -1,6 +1,6 @@
 import { Flex, Image } from '@mantine/core';
-import logo from '../../../assets/logo.svg';
-import Cart from '../Cart/Cart';
+import logo from '../shared/assets/logo.svg';
+import Cart from '../features/Cart/Cart';
 
 const Header = () => {
   return (

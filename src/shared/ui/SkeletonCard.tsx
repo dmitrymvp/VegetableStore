@@ -1,5 +1,5 @@
-import imgSkeleton from '../../../assets/skeleton.png';
-import loader from '../../../assets/loader.png';
+import imgSkeleton from '../assets/skeleton.png';
+import loader from '../assets/loader.png';
 import { Card, Box, Image } from '@mantine/core';
 
 const SkeletonCard = () => {

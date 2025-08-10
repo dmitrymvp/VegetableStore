@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import { MantineProvider } from '@mantine/core';
 import { CartContext } from '../App/context/CartContext';
 import { QuantityContext } from '../App/context/QauntityContext';
-import type { Product } from '../App/App';
+import type { Product } from '../shared/types/types';
 import { vi } from 'vitest';
 
 const removeFromCart = vi.fn();

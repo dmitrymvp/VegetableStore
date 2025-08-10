@@ -1,9 +1,5 @@
-import './App.css';
-
-import '@mantine/core/styles.css';
-
-import Header from './components/Header/Header';
-import Catalog from './components/Catalog/Catalog';
+import Catalog from '../features/Catalog/Catalog';
+import Header from '../widgets/Header';
 
 export default function MainPage() {
   return (

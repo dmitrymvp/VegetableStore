@@ -1,5 +1,5 @@
 import { Button } from '@mantine/core';
-import cart from '../../../assets/icons/cart.png';
+import cart from '../assets/icons/cart.png';
 
 type AddToCartButtonProps = {
   addCart: () => void;

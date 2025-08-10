@@ -1,10 +1,10 @@
 import { Group, Text, Image, Button } from '@mantine/core';
-import minus from '../../../assets/icons/Rectangle 70.svg';
-import plus from '../../../assets/icons/Union.png';
+import minus from '../assets/icons/Rectangle 70.svg';
+import plus from '../assets/icons/Union.png';
 
 import { useContext } from 'react';
-import { QuantityContext } from '../../context/QauntityContext';
-import { CartContext } from '../../context/CartContext';
+import { QuantityContext } from '../../App/context/QauntityContext';
+import { CartContext } from '../../App/context/CartContext';
 
 type QuantityProps = {
   id: number;

@@ -1,4 +1,4 @@
-import Quantity from '../../components/UI/Quantity';
+import Quantity from '../Quantity';
 import { renderWithProviders } from '../../../test/utils';
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import CatalogItem from '../CatalogItem';
+import CatalogItem from './CatalogItem';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from '../../../../test/utils';
-import { productResponse } from '../../../../mocks/response';
+import { renderWithProviders } from '../../test/utils';
+import { productResponse } from '../../test/mocks/response';
 
 describe('CatalogItem', () => {
   const product = productResponse[0];

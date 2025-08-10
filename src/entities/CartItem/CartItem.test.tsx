@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import CartItem from '../CartItem';
-import { productResponse } from '../../../../mocks/response';
-import { renderWithProviders } from '../../../../test/utils';
+import CartItem from './CartItem';
+import { productResponse } from '../../test/mocks/response';
+import { renderWithProviders } from '../../test/utils';
 import { screen } from '@testing-library/react';
 
 describe('CartItem', () => {

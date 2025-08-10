@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
-import SkeletonCard from '../../components/UI/SkeletonCard';
+import SkeletonCard from '../SkeletonCard';
 import { renderWithProviders } from '../../../test/utils';
 
 describe('SkeletonCard', () => {

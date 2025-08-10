@@ -3,8 +3,8 @@ import AddToCartButton from '../../shared/ui/AddToCartButton';
 import Quantity from '../../shared/ui/Quantity';
 
 import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
-import type { Product } from '../../App';
+import { CartContext } from '../../App/context/CartContext';
+import type { Product } from '../../shared/types/types';
 
 const CatalogItem = ({ name, image, price, id }: Product) => {
   const context = useContext(CartContext);
