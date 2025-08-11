@@ -1,28 +1,27 @@
 import { render } from '@testing-library/react';
 import { type ReactNode } from 'react';
 import { MantineProvider } from '@mantine/core';
-import { CartContext } from '../App/context/CartContext';
-import { QuantityContext } from '../App/context/QauntityContext';
-import type { Product } from '../shared/types/types';
-import { vi } from 'vitest';
+import { Provider } from 'react-redux';
+import { setupStore } from '../App/store/store';
 
-const removeFromCart = vi.fn();
-const cart = [] as Product[];
-const addCart = vi.fn();
-const quantityMock = { 1: 1 };
-const increment = vi.fn();
-const decrement = vi.fn();
+const store = setupStore();
 
-export function renderWithProviders(ui: ReactNode) {
-  return render(
-    <MantineProvider>
-      <CartContext.Provider value={{ cart, addCart, removeFromCart }}>
-        <QuantityContext.Provider
-          value={{ quantity: quantityMock, increment, decrement }}
-        >
-          {ui}
-        </QuantityContext.Provider>
-      </CartContext.Provider>
-    </MantineProvider>,
-  );
+export function renderWithRedux(ui: React.ReactElement, options = {}) {
+  return render(ui, {
+    wrapper: ({ children }: { children: ReactNode }) => (
+      <Provider store={store}>{children}</Provider>
+    ),
+    ...options,
+  });
+}
+
+export function renderWithProviders(ui: React.ReactElement, options = {}) {
+  return render(ui, {
+    wrapper: ({ children }: { children: ReactNode }) => (
+      <Provider store={store}>
+        <MantineProvider>{children}</MantineProvider>
+      </Provider>
+    ),
+    ...options,
+  });
 }

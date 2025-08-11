@@ -1,20 +1,22 @@
 import { Container, Flex, Title } from '@mantine/core';
 
 import CatalogItem from '../../entities/CatalogItem/CatalogItem';
-import { type Product } from '../../shared/types/types';
 import SkeletonCard from '../../shared/ui/SkeletonCard';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux';
+import { fetchProducts } from '../../App/store/redusers/VegetableThunk';
 
-type CatalogProps = {
-  data: Product[];
-  isLoading: boolean;
-};
+const Catalog = () => {
+  const dispatch = useAppDispatch();
+  const { products, isLoading, error } = useAppSelector(
+    (state) => state.vegetableReducer,
+  );
 
-const Catalog = ({ data, isLoading }: CatalogProps) => {
   const skeleton = new Array(16)
     .fill(null)
     .map((_, i) => <SkeletonCard key={i} />);
 
-  const productsList = data.map((product) => (
+  const productsList = products.map((product) => (
     <CatalogItem
       key={product.id}
       id={product.id}
@@ -23,6 +25,10 @@ const Catalog = ({ data, isLoading }: CatalogProps) => {
       price={product.price}
     />
   ));
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <Container size={1280} mt={59} pt={60} pl={0} pr={0}>
@@ -39,6 +45,7 @@ const Catalog = ({ data, isLoading }: CatalogProps) => {
         wrap="wrap"
       >
         {isLoading ? skeleton : productsList}
+        {error && <h2>{error}</h2>}
       </Flex>
     </Container>
   );

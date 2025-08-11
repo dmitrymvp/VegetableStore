@@ -12,26 +12,10 @@ import {
 import cartImage from '../../shared/assets/icons/cart.svg';
 import cartContent from '../../shared/assets/cart_content.png';
 import CartItem from '../../entities/CartItem/CartItem';
-import { useContext } from 'react';
-import { CartContext } from '../../App/context/CartContext';
-import { QuantityContext } from '../../App/context/QauntityContext';
+import { useAppSelector } from '../../shared/hooks/redux';
 
 const Cart = () => {
-  const cartContext = useContext(CartContext);
-
-  if (!cartContext) {
-    throw new Error('without provider');
-  }
-
-  const { cart } = cartContext;
-
-  const quantityContext = useContext(QuantityContext);
-
-  if (!quantityContext) {
-    throw new Error('without provider');
-  }
-
-  const { quantity } = quantityContext;
+  const { cart, quantity } = useAppSelector((state) => state.vegetableReducer);
 
   const cartList = cart.map((item, index) => {
     return (

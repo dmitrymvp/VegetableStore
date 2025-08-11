@@ -1,31 +1,21 @@
 import { Group, Text, Image, Button } from '@mantine/core';
 import minus from '../assets/icons/Rectangle 70.svg';
 import plus from '../assets/icons/Union.png';
-
-import { useContext } from 'react';
-import { QuantityContext } from '../../App/context/QauntityContext';
-import { CartContext } from '../../App/context/CartContext';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import {
+  decrement,
+  increment,
+  removeFromCart,
+} from '../../App/store/redusers/VegetableSlice';
 
 type QuantityProps = {
   id: number;
 };
 
 const Quantity = ({ id }: QuantityProps) => {
-  const cartContent = useContext(CartContext);
+  const dispatch = useAppDispatch();
 
-  if (!cartContent) {
-    throw new Error('without provider');
-  }
-
-  const { removeFromCart } = cartContent;
-
-  const quantityContext = useContext(QuantityContext);
-
-  if (!quantityContext) {
-    throw new Error('without provider');
-  }
-
-  const { quantity, increment, decrement } = quantityContext;
+  const { quantity } = useAppSelector((state) => state.vegetableReducer);
 
   return (
     <Group justify="flex-end" gap="xs">
@@ -37,7 +27,9 @@ const Quantity = ({ id }: QuantityProps) => {
         color="#dee2e6"
         p={8}
         onClick={
-          quantity[id] > 1 ? () => decrement(id) : () => removeFromCart(id)
+          quantity[id] > 1
+            ? () => dispatch(decrement({ id: id }))
+            : () => dispatch(removeFromCart({ id: id }))
         }
       >
         <Image src={minus} alt="minus" w={12} />
@@ -52,7 +44,7 @@ const Quantity = ({ id }: QuantityProps) => {
         radius="md"
         color="#dee2e6"
         p={8}
-        onClick={() => increment(id)}
+        onClick={() => dispatch(increment({ id: id }))}
       >
         <Image src={plus} alt="plus" w={12} />
       </Button>

@@ -1,19 +1,12 @@
+import type { Product } from '../../shared/types/types';
 import { Card, Image, Group, Text } from '@mantine/core';
 import AddToCartButton from '../../shared/ui/AddToCartButton';
 import Quantity from '../../shared/ui/Quantity';
-
-import { useContext } from 'react';
-import { CartContext } from '../../App/context/CartContext';
-import type { Product } from '../../shared/types/types';
+import { useAppDispatch } from '../../shared/hooks/redux';
+import { addCart } from '../../App/store/redusers/VegetableSlice';
 
 const CatalogItem = ({ name, image, price, id }: Product) => {
-  const context = useContext(CartContext);
-
-  if (!context) {
-    throw new Error('without provider');
-  }
-
-  const { addCart } = context;
+  const dispatch = useAppDispatch();
 
   return (
     <Card h={414} w={302} padding="md" radius="md" data-testid="card">
@@ -35,7 +28,11 @@ const CatalogItem = ({ name, image, price, id }: Product) => {
         <Text fw={700} fz="xl" mt="xs">
           {`$${price}`}
         </Text>
-        <AddToCartButton addCart={() => addCart(id)} />
+        <AddToCartButton
+          addCart={() => {
+            dispatch(addCart({ id: id }));
+          }}
+        />
       </Group>
     </Card>
   );
